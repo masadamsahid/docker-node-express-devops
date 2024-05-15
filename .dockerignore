@@ -1,0 +1,11 @@
+node_modules
+
+.dockerignore
+Dockerfile
+docker-compose*
+
+.git
+.gitignore
+
+
+
