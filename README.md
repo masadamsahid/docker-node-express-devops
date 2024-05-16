@@ -23,3 +23,9 @@ prod:
 docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 ```
 
+
+## Load balancing:
+
+```bash
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --scale node-app=2
+```
