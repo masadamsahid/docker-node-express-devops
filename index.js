@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const cors = require('cors');
+
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT, REDIS_URL, REDIS_PORT, SESSION_SECRET } = require('./config/config');
 
 
@@ -27,6 +29,7 @@ const connectWithRetry = () => {
 connectWithRetry();
 
 app.enable('trust proxy');
+app.use(cors({}));
 app.use(session({
   store: new RedisStore({ client: redisClient }),
   secret: SESSION_SECRET,
