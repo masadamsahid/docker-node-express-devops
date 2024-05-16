@@ -10,6 +10,8 @@ exports.signUp = async (req, res, next) => {
       password: hashPassword
     });
     
+    req.session.user = newUser;
+    
     res.status(201).json({
       status: "success",
       data: {
@@ -32,6 +34,8 @@ exports.login = async (req, res, next) => {
     
     const isCorrect = await bcrypt.compare(password, user.password);
     if(!isCorrect) return res.status(401).json({ status: 'failed', message: 'Wrong credentials' });
+    
+    req.session.user = user;
     
     res.status(200).json({
       status: "success",
